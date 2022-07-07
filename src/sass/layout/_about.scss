@@ -117,33 +117,6 @@
 }
 
 .about-box__text {
-  // @include mq(mob-only) {
-  //   background-image: url(../images/png/about/milk-mob-1x.png);
-  //   background-repeat: no-repeat;
-  //   background-position: 50% 35%;
-  //   background-size: contain;
-
-  //   @include mq(retina) {
-  //     background-image: url(../images/png/about/milk-mob-2x.png);
-  //     background-repeat: no-repeat;
-  //     background-position: 50% 35%;
-  //     background-size: contain;
-  //   }
-  // }
-  // @include mq(fab-only) {
-  //   background-image: url(../images/png/about/milk-mob-1x.png);
-  //   background-repeat: no-repeat;
-  //   background-position: 50% 35%;
-  //   background-size: contain;
-
-  //   @include mq(retina) {
-  //     background-image: url(../images/png/about/milk-mob-2x.png);
-  //     background-repeat: no-repeat;
-  //     background-position: 50% 30%;
-  //     background-size: contain;
-  //   }
-  // }
-
   @include mq(desk) {
     padding-top: 90px;
   }
