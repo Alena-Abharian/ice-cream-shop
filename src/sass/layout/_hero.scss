@@ -1,55 +1,49 @@
-.hero {
-  background-color: var(--hero-bg-color);
-  height: 502px;
-  @include mq(tab){
-    height: 416px;
-  }
-  @include mq(desk){
+.hero-bg {
+  @include mq(desk) {
+    background: linear-gradient(-45deg, #ffb8ca, #ffa5ba, #fc90a6);
+    background-size: 400% 200%;
+    animation: gradient 15s ease infinite;
     height: 664px;
   }
 }
 
-.btn__hero{
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero__container {
   display: flex;
+  justify-content: space-between;
 }
 
-.btn__link {
-  display: block;
-  padding: 7px 13px;
-  border-radius: 20px;
-  font-family: var(--primary-font-family);
-  font-weight: 400;
-  font-size: 8px;
-  line-height: 10px;
-  align-items: center;
-  text-align: center;
-
-  @include mq(desk){
-    padding: 11px 20px;
-    border-radius: 20px;
-    font-family: var(--primary-font-family);
-    font-size: 14px;
-    line-height: 18px;
+.hero__section {
+  background-color: var(--hero-bg-color);
+  position: relative;
+  overflow: hidden;
+  padding-top: 194px;
+  padding-bottom: 156px;
+  @include mq(tab) {
+    padding-top: 102px;
+    padding-bottom: 14px;
   }
-
-  &--white {
-    background-color: var(--white-color);
-    color: var(--accent-color);
-  }
-
-  &--pink {
-    background-color: var(--accent-color);
-    color: var(--white-color);
-    margin-right: 8px;
-    @include mq(desk){
-      margin-right: 12px;
-    }
+  @include mq(desk) {
+    padding-top: 147px;
+    padding-bottom: 40px;
+    //max-height: 664px;
   }
 }
 
+//-----------Text------------
 
-
-.hero__title {
+.hero-content__title {
   max-width: 218px;
   margin-bottom: 20px;
   color: var(--white-color);
@@ -59,13 +53,13 @@
   line-height: 1.15;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  @include mq(tab){
+  @include mq(tab) {
     max-width: 162px;
     font-size: 22px;
     line-height: 1.13;
   }
 
-  @include mq(desk){
+  @include mq(desk) {
     max-width: 277px;
     margin-bottom: 24px;
     font-size: 38px;
@@ -76,42 +70,223 @@
     color: var(--accent-color);
     font-size: 48px;
     line-height: 96.5%;
-    @include mq(tab){
+    @include mq(tab) {
       font-size: 34px;
       line-height: 90.5%;
     }
-    @include mq(desk){
+    @include mq(desk) {
       font-size: 58px;
       line-height: 90.5%;
     }
   }
 }
-.hero-content__position{
-  @media screen and (max-width: 480px) {
-    position: absolute;
-    z-index: 2;
-    top: 194px;
-  }
-}
 
-.hero-content{
-  position: relative;
+.btn__hero {
   display: flex;
-  justify-content: space-between;
-  padding-top: 194px;
-  padding-bottom: 158px;
-  @include mq(tab){
-    padding-top: 102px;
-    padding-bottom: 190px;
-  }
-  @include mq(desk){
-    padding-top: 147px;
-    padding-bottom: 316px;
-  }
-
 }
 
-.number{
+.btn__link {
+  display: block;
+  padding: 8px 13px;
+  border-radius: 20px;
+  font-family: var(--primary-font-family);
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 10px;
+  align-items: center;
+  text-align: center;
+
+  @include mq(desk) {
+    padding: 11px 20px;
+    border-radius: 20px;
+    font-family: var(--primary-font-family);
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  &--white {
+    background-color: var(--white-color);
+    color: var(--accent-color);
+    transition: background-color var(--transition);
+
+    &:hover,
+    &:focus {
+      background-color: var(--btn-hover-color);
+    }
+  }
+
+  &--pink {
+    background-color: var(--accent-color);
+    color: var(--white-color);
+    margin-right: 8px;
+    @include mq(desk) {
+      margin-right: 12px;
+    }
+  }
+}
+
+// ----- LEFT PART -----
+
+.hero__left {
+  position: relative;
+  z-index: 2;
+}
+
+// ----- HERO CONTENT -----
+.hero__content {
+  z-index: 99;
+  position: relative;
+}
+
+.hero-info {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  width: 154px;
+  height: 152px;
+  padding-left: 154px;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+
+  @include mq(desk) {
+    width: 213px;
+    height: 216px;
+    margin-top: 40px;
+    padding-left: 213px;
+  }
+}
+
+.hero-info:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 152px;
+  height: 154px;
+  background-size: 152px 154px;
+  background-image: url('../images/png/hero/milk-desk-1x.png');
+  @include mq(desk) {
+    width: 213px;
+    height: 216px;
+    background-size: 213px 216px;
+  }
+}
+
+.hero-info__btn {
+  z-index: 2;
+  width: 124px;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 150%;
+  color: var(--white-color);
+  @include mq(desk) {
+    width: 220px;
+    font-size: 14px;
+    line-height: 140%;
+    // margin-top: 30px;
+  }
+}
+
+.hero-info__btn--hide.text-open.hero-info__btn {
+  height: auto;
+  overflow: visible;
+}
+
+.hero-info__btn--hide.hero-info__btn {
+  height: 0;
+  overflow: hidden;
+}
+
+.hero-info__arrow.text-open img {
+  transform: rotate(180deg);
+  transition: transform var(--transition);
+}
+
+.hero-info__arrow {
+  border-radius: 50%;
+  margin-top: 4px;
+  width: 18px;
+  height: 18px;
+
+  @media (max-width: 767px) {
+    background-color: transparent;
+    border: none;
+  }
+  @media (max-width: 767px) {
+    display: none;
+  }
+  @include mq(desk) {
+    margin-top: 20px;
+    width: 26px;
+    height: 26px;
+  }
+}
+
+//-------Ice + circle--------
+
+.hero-img {
+  position: absolute;
+  width: 346px;
+  height: 344px;
+  top: 83px;
+  left: calc(50% - 120px);
+  //left: 36px;
+  background-image: url('../images/png/hero/circle-desk-1x.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  @include mq(tab) {
+    left: calc(50% - 120px);
+    width: 335px;
+    height: 333px;
+    top: 43px;
+  }
+  @include mq(desk) {
+    width: 534px;
+    height: 534px;
+    top: 55px;
+    left: calc(50% - 70px);
+  }
+}
+
+//Ice Cream
+.hero-img__ice {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  bottom: -75px;
+  left: 81px;
+  width: 171px;
+  height: 410px;
+  transition: animation-duration var(--transition);
+  @include mq(tab) {
+    bottom: -40px;
+    width: 143px;
+    height: 336px;
+  }
+  @include mq(desk) {
+    top: 65px;
+    left: 119px;
+    width: 236px;
+    height: 557px;
+  }
+}
+
+.hero-img__ice.animate__headShake {
+  animation-duration: 6s;
+}
+
+// -------- LEFT PART --------
+.hero__right {
+  position: relative;
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+//----------Number--------
+
+.number {
   font-family: var(--title-font-family);
   color: var(--accent-color);
   font-weight: 400;
@@ -121,94 +296,66 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
 
-  @include mq(mob-only){
-    display: none;
-  }
-  @include mq(desk){
+  @include mq(desk) {
     font-size: 46px;
     line-height: 1.15;
   }
 
-  &__margin{
-    margin-bottom: 18px;
-  }
-
-  &__text{
+  &__text {
     font-family: var(--primary-font-family);
     color: var(--white-color);
     font-weight: 400;
     font-size: 8px;
     line-height: 1.25;
     text-align: right;
-    @include mq(desk){
+    @include mq(desk) {
       font-size: 14px;
       line-height: 1.2;
+      margin-top: 2px;
     }
   }
 }
 
-.number__position{
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-  @include mq(tab-only){
-    position: absolute;
-    z-index: 2;
-    top: 102px;
-    right: 0;
-  }
-}
-
-
-//Ice Cream
-.hero--img__ice{
-  position: absolute;
+.number__wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
   z-index: 1;
-  top: 92px;
-  //right: 32px;
-  right: 10%;
-  width: 171px;
-  height: 410px;
-  //@include mq(mob-only){
-  //  display: none;
-  //}
-  @include mq(tab){
-    top: 80px;
-    //right: 303px;
-    right: 39%;
-    width: 143px;
-    height: 336px;
-  }
-  @include mq(desk){
-    top: 108px;
-    //right: 328px;
-    right: 27%;
-    width: 236px;
-    height: 557px;
+}
+
+.number:after {
+  content: '';
+  background-image: url('../images/png/hero/circle-mini-desk-1x.png');
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  position: absolute;
+  z-index: -1;
+  right: -8px;
+
+  @include mq(desk) {
+    width: 30px;
+    height: 30px;
+    right: -15px;
   }
 }
 
-//Ice Circle
-.hero--img__circle{
+.number__text:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.hero-img__woman {
   position: absolute;
-  top: 83px;
-  right: 0;
-  height: 344px;
-  //@include mq(mob-only){
-  //  display: none;
-  //}
-  @include mq(tab){
-    top: 43px;
-    //right: 185px;
-    right: 24%;
-    width: 335px;
-    height: 333px;
-  }
-  @include mq(desk){
-    top: 54px;
-    //right: 149px;
-    right: 12%;
-    width: 534px;
-    height: 534px;
+  bottom: -15px;
+  right: -10px;
+  z-index: 2;
+  width: 190px;
+  height: 150px;
+  @include mq(desk) {
+    width: 304px;
+    height: 241px;
+    bottom: -40px;
   }
 }
